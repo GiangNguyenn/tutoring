@@ -1,0 +1,12 @@
+package revision;
+
+public enum State {
+    NEW_SOUTH_WALES,
+    AUSTRALIAN_CAPITAL_TERRITORY,
+    VICTORIA,
+    QUEENSLAND,
+    SOUTH_AUSTRALIA,
+    WESTERN_AUSTRALIA,
+    TASMANIA,
+    NORTHERN_TERRITORY,
+}
