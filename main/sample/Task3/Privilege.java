@@ -1,4 +1,4 @@
-package sample.Task2;
+package sample.Task3;
 
 public enum Privilege {
     GUEST,

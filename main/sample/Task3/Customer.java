@@ -1,4 +1,4 @@
-package sample.Task2;
+package sample.Task3;
 
 
 public class Customer {
@@ -61,9 +61,11 @@ public class Customer {
             return false;
         }
 
+//        check if email splitted by "@" only contains 2 parts => only one "@"
         if(inEmail.split("@").length > 2){
             return false;
         }
+
 
         if(!inEmail.split("\\.")[1].equals(".com") || inEmail.split("\\.")[1].equals(".vn")){
             return false;
