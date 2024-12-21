@@ -154,14 +154,4 @@ public class Customer {
             customerId = -1;
         }
     }
-
-    @Override
-    public String toString() {
-        return "Customer{" +
-                "name='" + name + '\'' +
-                ", email='" + email + '\'' +
-                ", customerId=" + customerId +
-                ", privilege=" + privilege +
-                '}';
-    }
 }
