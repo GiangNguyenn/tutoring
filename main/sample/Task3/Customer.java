@@ -14,6 +14,13 @@ public class Customer {
         this.privilege = inPrivilege;
     }
 
+    public Customer(String inName, int inCustomerId, String inEmail) {
+        setName(inName);
+        setCustomerId(inCustomerId);
+        setEmail(inEmail);
+        this.privilege = Privilege.GUEST;
+    }
+
     public String getName() {
         return name;
     }
@@ -67,12 +74,12 @@ public class Customer {
 
         // check if any character is number ==> name invalid
         for (int i = 0; i < inName.length(); i++) {
-            if (Character.isDigit(inName.charAt(i))==true){
+            if (Character.isDigit(inName.charAt(i)) == true) {
                 return false;
             }
         }
 
-        if(!isTitlecase(inName)){
+        if (!isTitlecase(inName)) {
             return false;
         }
 
@@ -113,7 +120,7 @@ public class Customer {
 
         String[] parts = inEmail.split(".");
 
-        if (parts.length != 2) {
+        if (parts.length == 0) {
             return false;
         }
 
@@ -122,7 +129,7 @@ public class Customer {
             return false;
         }
 
-        if (!inEmail.split(".")[1].equals("com")){
+        if (!inEmail.split(".")[1].equals("com")) {
             return false;
         }
 
@@ -134,7 +141,7 @@ public class Customer {
             return false;
         }
 
-        for(int i = 0; i < String.valueOf(inCustomerId).length(); i++) {
+        for (int i = 0; i < String.valueOf(inCustomerId).length(); i++) {
             if (!Character.isDigit(String.valueOf(inCustomerId).charAt(i))) {
                 return false;
             }
@@ -149,9 +156,20 @@ public class Customer {
     public void setCustomerId(int inCustomerId) {
         if (isValidCustomerId(inCustomerId)) {
             customerId = inCustomerId;
-        }
-        else{
+        } else {
             customerId = -1;
         }
+    }
+
+//    to string
+
+    @Override
+    public String toString() {
+        return "Customer{" +
+                "name='" + name + '\'' +
+                ", email='" + email + '\'' +
+                ", customerId=" + customerId +
+                ", privilege=" + privilege +
+                '}';
     }
 }
