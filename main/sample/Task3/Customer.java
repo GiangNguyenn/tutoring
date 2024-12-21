@@ -115,6 +115,12 @@ public class Customer {
             return false;
         }
 
+        String[] parts = inEmail.split(".");
+
+        if (parts.length != 2) {
+            return false;
+        }
+
         // split  string ==> String[]
         if (!inEmail.split(".")[1].equals("vn")) {
             return false;
