@@ -65,10 +65,6 @@ public class Customer {
             return false;
         }
 
-        // Check if the name contains only alphabet characters (title case)
-//        if (!name.matches("^[A-Z][a-z]+( [A-Z][a-z]+)*$")) {
-//            return false;
-//        }
         // check if any character is number ==> name invalid
         for (int i = 0; i < inName.length(); i++) {
             if (Character.isDigit(inName.charAt(i))==true){
@@ -157,5 +153,15 @@ public class Customer {
         else{
             customerId = -1;
         }
+    }
+
+    @Override
+    public String toString() {
+        return "Customer{" +
+                "name='" + name + '\'' +
+                ", email='" + email + '\'' +
+                ", customerId=" + customerId +
+                ", privilege=" + privilege +
+                '}';
     }
 }
