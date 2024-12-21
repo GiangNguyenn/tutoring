@@ -9,12 +9,9 @@ public class Customer {
 
     public Customer(String inName, int inCustomerId, String inEmail, Privilege inPrivilege) {
         setName(inName);
-
         setCustomerId(inCustomerId);
-
         setEmail(inEmail);
-
-        setPrivilege(inPrivilege);
+        this.privilege = inPrivilege;
     }
 
     public String getName() {
@@ -33,6 +30,58 @@ public class Customer {
         return email;
     }
 
+    public static boolean isTitlecase(String str) {
+        if (str == null || str.isEmpty()) {
+            return false;
+        }
+
+        char[] chars = str.toCharArray();
+        boolean isFirstChar = true;
+
+        for (char c : chars) {
+            if (isFirstChar) {
+                if (!Character.isUpperCase(c)) {
+                    return false;
+                }
+                isFirstChar = false;
+            } else {
+                if (!Character.isLowerCase(c)) {
+                    return false;
+                }
+            }
+        }
+
+        return true;
+    }
+
+    private boolean isValidName(String inName) {
+        // Check if the name contains at least 2 characters
+        if (inName.length() < 2) {
+            return false;
+        }
+
+        // Check for leading or trailing spaces
+        if (inName.trim().length() != inName.length()) {
+            return false;
+        }
+
+        // Check if the name contains only alphabet characters (title case)
+//        if (!name.matches("^[A-Z][a-z]+( [A-Z][a-z]+)*$")) {
+//            return false;
+//        }
+        // check if any character is number ==> name invalid
+        for (int i = 0; i < inName.length(); i++) {
+            if (Character.isDigit(inName.charAt(i))==true){
+                return false;
+            }
+        }
+
+        if(!isTitlecase(inName)){
+            return false;
+        }
+
+        return true;
+    }
 
     public void setName(String inName) {
         if (isValidName(inName)) {
@@ -57,36 +106,21 @@ public class Customer {
 
     private boolean isValidEmail(String inEmail) {
         // check if email exceed 125
-        if(inEmail.length() > 125){
+        if (inEmail.length() > 125) {
             return false;
         }
 
-//        check if email splitted by "@" only contains 2 parts => only one "@"
-        if(inEmail.split("@").length > 2){
+//      // check if email split by "@" only contains 2 parts => only one "@"
+        if (inEmail.split("@").length > 2) {
             return false;
         }
 
-
-        if(!inEmail.split("\\.")[1].equals(".com") || inEmail.split("\\.")[1].equals(".vn")){
+        // split  string ==> String[]
+        if (!inEmail.split(".")[1].equals("vn")) {
             return false;
         }
 
-        return true;
-    }
-
-    private boolean isValidName(String name) {
-        // Check if the name contains at least 2 characters
-        if (name.length() < 2) {
-            return false;
-        }
-
-        // Check for leading or trailing spaces
-        if (name.trim().length() != name.length()) {
-            return false;
-        }
-
-        // Check if the name contains only alphabet characters (title case)
-        if (!name.matches("^[A-Z][a-z]+( [A-Z][a-z]+)*$")) {
+        if (!inEmail.split(".")[1].equals("com")){
             return false;
         }
 
@@ -115,7 +149,7 @@ public class Customer {
             customerId = inCustomerId;
         }
         else{
-            customerId = 0;
+            customerId = -1;
         }
     }
 }

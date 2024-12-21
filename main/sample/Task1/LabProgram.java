@@ -33,6 +33,7 @@ public class LabProgram {
             shop.add(garment);
             times++;
         }
+
         System.out.println("Updated stock list:");
         shop.printAllItems();
 
